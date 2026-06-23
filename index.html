@@ -85,6 +85,10 @@
     text-align:center;
   }
 
+  @media (max-width:560px){
+    header.hero{ padding: 28px 0 0; }
+  }
+
   .eyebrow{
     font-family:'JetBrains Mono', monospace;
     font-size:12.5px;
@@ -131,19 +135,40 @@
     justify-content:center;
   }
 
+  @media (max-width:560px){
+    .timer-frame{ margin: 30px 0 14px; }
+  }
+
   .timer{
     position:relative;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap: clamp(10px, 3vw, 28px);
-    align-items:stretch;
+    align-items:center;
+    gap: clamp(14px, 3vw, 28px);
     padding: 38px clamp(20px, 5vw, 52px) 30px;
     border:1px solid var(--line);
     border-radius: 22px;
     background: linear-gradient(180deg, rgba(20,43,82,0.55), rgba(6,18,36,0.55));
     backdrop-filter: blur(6px);
     box-shadow: 0 30px 80px -30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  .pair{
+    display:flex;
+    align-items:stretch;
+    gap: clamp(10px, 3vw, 28px);
+  }
+
+  .tline{
+    width:1px;
+    align-self:stretch;
+    background: var(--line);
+  }
+
+  @media (max-width:560px){
+    .timer{ flex-direction:column; }
+    .tline-mid{ display:none; }
   }
 
   .timer::before{
@@ -162,7 +187,6 @@
   .seg{
     text-align:center;
     min-width: 64px;
-    align-self:flex-end;
   }
 
   .seg .num{
@@ -187,12 +211,6 @@
     color: var(--steel);
   }
 
-  .colon{
-    width:1px;
-    align-self:stretch;
-    background: var(--line);
-    margin-bottom: 6px;
-  }
 
   .since{
     text-align:center;
@@ -340,13 +358,17 @@
 
   <div class="timer-frame">
     <div class="timer" id="timer">
-      <div class="seg"><div class="num" id="d">00</div><div class="lbl">дней</div></div>
-      <div class="colon"></div>
-      <div class="seg"><div class="num" id="h">00</div><div class="lbl">часов</div></div>
-      <div class="colon"></div>
-      <div class="seg"><div class="num" id="m">00</div><div class="lbl">минут</div></div>
-      <div class="colon"></div>
-      <div class="seg"><div class="num"><span class="accent" id="s">00</span></div><div class="lbl">секунд</div></div>
+      <div class="pair">
+        <div class="seg"><div class="num" id="d">00</div><div class="lbl">дней</div></div>
+        <div class="tline"></div>
+        <div class="seg"><div class="num" id="h">00</div><div class="lbl">часов</div></div>
+      </div>
+      <div class="tline tline-mid"></div>
+      <div class="pair">
+        <div class="seg"><div class="num" id="m">00</div><div class="lbl">минут</div></div>
+        <div class="tline"></div>
+        <div class="seg"><div class="num"><span class="accent" id="s">00</span></div><div class="lbl">секунд</div></div>
+      </div>
     </div>
   </div>
   <div class="since">без стика с 16.06.2026, 17:20</div>
